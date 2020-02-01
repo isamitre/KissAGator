@@ -12,10 +12,10 @@
         android:id="@+id/textView1"
         android:layout_width="364dp"
         android:layout_height="88dp"
-        android:layout_marginTop="64dp"
+        android:layout_marginTop="32dp"
         android:foregroundGravity="center_vertical|center|center_horizontal"
         android:gravity="center_horizontal|center_vertical"
-        android:text="Kiss A Gator Goodnight"
+        android:text="Kiss A Homie Goodnight"
         android:textColor="#FFFFFF"
         android:textSize="36sp"
         android:textStyle="bold"
@@ -39,43 +39,35 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView1" />
 
-    <ImageButton
-        android:id="@+id/imageButton"
-        android:layout_width="196dp"
-        android:layout_height="175dp"
-        android:layout_marginTop="32dp"
-        android:src="@drawable/swamphacksgator"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView2" />
-
     <EditText
         android:id="@+id/editText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
+        android:layout_width="220dp"
+        android:layout_height="38dp"
+        android:layout_marginTop="450dp"
         android:ems="10"
-        android:hint="enter your homie's digits"
+        android:hint="Enter your homie's digits"
         android:inputType="textPersonName"
         android:textAppearance="@style/TextAppearance.AppCompat.Body2"
         android:textColor="#CCFFFFFF"
         android:textColorHint="#D6D6D6"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.51"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageButton" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/btnSendSMS"
-        android:layout_width="wrap_content"
+        android:layout_width="220dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="36dp"
+        tools:layout_editor_absoluteX="91dp"
+        tools:layout_editor_absoluteY="587dp"
+        android:layout_marginTop="18dp"
         android:foregroundGravity="center_vertical|center|center_horizontal"
         android:gravity="center_horizontal|center_vertical"
-        android:text="send a kiss ;*"
+        android:text="Send A Kiss From A Gator"
         android:textAppearance="@style/TextAppearance.AppCompat.Body2"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editText" />
 
@@ -114,5 +106,23 @@
         app:layout_constraintStart_toEndOf="@+id/schoolchange"
         app:layout_constraintTop_toBottomOf="@+id/btnSendSMS"
         app:layout_constraintVertical_bias="1.0" />
+=======
+    <ImageButton
+        android:id="@+id/imageButton2"
+        android:layout_width="220dp"
+        android:layout_height="220dp"
+        android:layout_marginTop="5dp"
+        android:adjustViewBounds="true"
+        android:background="#FD000000"
+        android:maxHeight="100dp"
+        android:scaleType="fitCenter"
+        android:src="@drawable/homies"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView2"
+        app:layout_constraintVertical_bias="0.048" />
+>>>>>>> master
 
 </androidx.constraintlayout.widget.ConstraintLayout>
