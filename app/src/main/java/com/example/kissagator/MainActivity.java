@@ -16,6 +16,8 @@
 package com.example.kissagator;
 
 import android.Manifest;
+import android.app.ActionBar;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.app.Activity;
@@ -36,6 +38,7 @@ import android.widget.Toast;
 
 //import com.example.tutorialspoint.R;
 import com.example.kissagator.R;
+import com.google.android.material.tabs.TabLayout;
 
 public class MainActivity extends Activity {
     private static final int MY_PERMISSIONS_REQUEST_SEND_SMS =0 ;
@@ -43,6 +46,8 @@ public class MainActivity extends Activity {
     EditText txtphoneNo;
     String phoneNo;
     String message;
+    private Button schoolchange;
+    private Button contactfromhome;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,6 +62,33 @@ public class MainActivity extends Activity {
                 sendSMSMessage();
             }
         });
+       // button linking home to page where we change schools
+        schoolchange = (Button) findViewById(R.id.schoolchange);
+        schoolchange.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openSchool();
+
+            }
+        });
+        // button linking home to contact screen
+        contactfromhome = (Button) findViewById(R.id.contactfromhome);
+        contactfromhome.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openContacts();
+            }
+        });
+
+    }
+    public void openSchool(){
+        Intent intent = new Intent(this, school.class);
+        startActivity(intent);
+
+    }
+    public void openContacts(){
+        Intent intenteee = new Intent(this, contacts.class);
+        startActivity(intenteee);
     }
 
     protected void sendSMSMessage() {
