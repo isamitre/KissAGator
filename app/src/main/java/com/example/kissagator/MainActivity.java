@@ -33,6 +33,7 @@ import androidx.core.content.ContextCompat;
 //import android.support.v4.content.ContextCompat;
 //import com.example.tutorialspoint.R;
 
+
 public class MainActivity extends Activity {
     private static final int MY_PERMISSIONS_REQUEST_SEND_SMS =0 ;
     Button sendBtn;
@@ -41,6 +42,8 @@ public class MainActivity extends Activity {
     String message;
     private Button schoolchange;
     private Button contactfromhome;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -73,6 +76,7 @@ public class MainActivity extends Activity {
             }
         });
 
+
     }
     public void openSchool(){
         Intent intent = new Intent(this, school.class);
@@ -86,22 +90,43 @@ public class MainActivity extends Activity {
 
     protected void sendSMSMessage() {
         phoneNo = txtphoneNo.getText().toString();
-        message = "A gator has sent you a kiss :)";
+        school a = new school();
+        String choosey = a.getSchoolChoice();
+        System.out.println(a.getSchoolChoice());
+
+        if (choosey.equals("FSU")){
+            message = "A nasty nole has sent you a kiss :)";
+
+        } else if (choosey.equals("USF")){
+            message = "A bashful bull has sent you a kiss :)";
+
+        } else if (choosey.equals("UNF")){
+            message = "An obliging osprey has sent you a kiss :)";
+
+        } else if (choosey.equals("UM")){
+            message = "A hairy hurricane has sent you a kiss :)";
+
+        } else if (choosey.equals("SF")){
+            message = "A good doggo has sent you a kiss :)";
+        } else {
+            message = "A gator has sent you a kiss :)";
+        }
+
 
         int isAllowed = ContextCompat.checkSelfPermission(this, Manifest.permission.SEND_SMS);
 
-        if ( isAllowed != PackageManager.PERMISSION_GRANTED) {
+        if ( isAllowed == PackageManager.PERMISSION_GRANTED) {
             if (ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.SEND_SMS)) {
                 SmsManager smsManager = SmsManager.getDefault();
                 smsManager.sendTextMessage(phoneNo, null, message, null, null);
-                Toast.makeText(getApplicationContext(), "SMS sent.",
+                Toast.makeText(getApplicationContext(), "Permission failed, please try again.",
                         Toast.LENGTH_LONG).show();
             } else {
                 ActivityCompat.requestPermissions(this,
                         new String[]{Manifest.permission.SEND_SMS},
                         MY_PERMISSIONS_REQUEST_SEND_SMS);
                 Toast.makeText(getApplicationContext(),
-                        "Permission failed, please try again.", Toast.LENGTH_LONG).show();
+                        "SMS sent.", Toast.LENGTH_LONG).show();
             }
         }
 
