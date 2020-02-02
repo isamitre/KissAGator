@@ -1,18 +1,21 @@
 package com.example.kissagator;
 
+import android.database.Cursor;
 import android.os.Bundle;
+import android.provider.ContactsContract;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
-import android.database.Cursor;
 import android.widget.SimpleCursorAdapter;
-import android.provider.ContactsContract;
 
-
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 
 public class contacts extends AppCompatActivity {
+
+    MainActivity sender = new MainActivity();
 
     ListView l1;
     Button btn;
@@ -30,10 +33,7 @@ public class contacts extends AppCompatActivity {
             public void onClick(View v) {
                 get(v);
             }
-
-
         });
-
     }
 
 
@@ -41,15 +41,31 @@ public class contacts extends AppCompatActivity {
         Cursor cursor = getContentResolver().query(ContactsContract.CommonDataKinds.Phone.CONTENT_URI,null,null,null,null);
         startManagingCursor(cursor);
         cursor.moveToNext();
-        String a = cursor.getString(cursor.getColumnIndex(ContactsContract.Contacts.DISPLAY_NAME));
-        System.out.println(a);
-        String[] from = {ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME,ContactsContract.CommonDataKinds.Phone.NUMBER,ContactsContract.CommonDataKinds.Phone._ID};
+        final String[] from = {ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME,ContactsContract.CommonDataKinds.Phone.NUMBER,ContactsContract.CommonDataKinds.Phone._ID};
         int[] to = {android.R.id.text1,android.R.id.text2};
 
         SimpleCursorAdapter simpleCursorAdapter = new SimpleCursorAdapter(this,android.R.layout.simple_list_item_2,cursor,from,to);
         l1.setAdapter(simpleCursorAdapter);
-        l1.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
 
+        l1.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
+        l1.setTextFilterEnabled(true);
+        l1.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                for(int i=0;i<=id;i++){
+                    System.exit(1);
+                }
+            }
+        });
+
+
+
+    }
+
+    public void contactedPressed(){
+        AlertDialog.Builder builder = new AlertDialog.Builder(contacts.this);
+        builder.setTitle("Send a Kiss?");
+        builder.setMessage("Are you sure you want to send a kiss to this homie?");
     }
 
 }
